@@ -1,6 +1,18 @@
+import { useEffect, useState } from "react";
 import { InfoProduct, PhotoSection } from "../../widgets";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export const Detail = () => {
+
+    const [product, setProduct] = useState();
+    const {id} = useParams();
+
+    useEffect(() => {
+        axios(`https://api.escuelajs.co/api/v1/products/${id}`)
+        .then(({data}) => setProduct(data))
+        .catch((error) => console.log(error));
+    }) 
     return (
         <div className="container">
             <h1 className="detailTitle">Detail Product 
@@ -10,8 +22,8 @@ export const Detail = () => {
                 
             </h1>
             <div className="flexProduct">
-                <PhotoSection />
-                <InfoProduct />
+                <PhotoSection product={product} />
+                <InfoProduct product={product} />
             </div>
         </div>
     );

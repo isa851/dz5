@@ -1,5 +1,6 @@
 import './casual.css';
 import {Card} from '../../../entities'
+import {Link} from 'react-router-dom';
 
 export const Casual = ({product}) => {
     console.log(product);
@@ -12,9 +13,8 @@ export const Casual = ({product}) => {
                     product && 
                     product.map((item) => (
                         <div key={item.id}>
-                            <Card img={item.category.image} title={item.title} rate={item?.rating?.rate} price={item.price} />
+                            <Link to={`/detail/${item.id}`}><Card img={item.category.image} title={item.title} rate={item?.rating?.rate} price={item.price} /></Link>
                         </div>
-                        
                     ))
                 }
             </div>
@@ -45,4 +45,3 @@ export const Casual = ({product}) => {
         </div>
     );
 }
-

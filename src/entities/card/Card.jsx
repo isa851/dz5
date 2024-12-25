@@ -3,7 +3,7 @@ import prod from '../../imgs/homepage/Frame32.jpg'
 import ReactStars from 'react-stars';
 
 export const Card = ({img, title, rate, price}) => {
-    console.log(img);
+
     return (
         <div className="product">
             <div className="item">
